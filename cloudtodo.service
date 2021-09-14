@@ -1,0 +1,10 @@
+[Unit]
+Description=cloudtodo
+
+[Service]
+ExecStart=/bin/bash /cloudtodo/cloudtodo.sh
+Type=oneshot
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

@@ -1,8 +1,10 @@
 import discord
 import os
 import time
+import web
 
 client = discord.Client()
+TOKEN = os.environ['TOKEN']
 
 selected = 0
 
@@ -131,6 +133,12 @@ async def on_message(message):
     
     if msg.startswith('$help'):
         await message.channel.send("help | show this text \nstatus | shows the status of the bot \ntodo | starts the todo gui")
+    if msg.startswith('$webinterface'):
+      await message.channel.send("Activating Webinterface!")
+      f = open("settings" , "w")
+      f.write("True")
+      f.close()
+      await message.channel.send("Webinterface Activated!")
 
     if msg.startswith('$status'):
         await message.channel.send("{0.user} is online and ready!".format(client))
@@ -373,5 +381,5 @@ async def on_reaction_add(reaction, user):
 
 
 
-
-client.run('')
+web.web()
+client.run(TOKEN)

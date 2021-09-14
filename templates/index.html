@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<title>Webinterface</title>
+<link rel="icon" href="/static/Logo.png" type="image/png">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
+<body>
+
+<!-- Header -->
+<header class="w3-container w3-theme w3-padding" id="myHeader">
+  <div class="w3-center">
+  <h4>{{ user }} welcome to</h4>
+  <h1 class="w3-xxxlarge w3-animate-bottom">Cloudtodo</h1>
+    <div class="w3-padding-32">
+      <form method="post" action="/">
+        <input class="w3-btn w3-xlarge w3-dark-grey w3-hover-light-grey" type="submit" value="Logout" name="Logout"/>
+      </form>
+    </div>
+  </div>
+</header>
+
+<div class="w3-row-padding w3-center w3-margin-top">
+<div class="w3-third">
+  <div class="w3-card w3-container" style="min-height:460px">
+  <h3>Usermanagement</h3><br>
+  <p>Registerd users:</p>
+  <p>{{ username }}</p>
+  <button class="w3-button w3-theme" onclick="document.getElementById('id01').style.display='block'">Create-user</button>
+  <button class="w3-button w3-theme" onclick="document.getElementById('id02').style.display='block'">Delete-user</button>
+  </div>
+</div>
+
+<div id="id01" class="w3-modal">
+  <div class="w3-modal-content w3-card-4 w3-animate-top">
+    <header class="w3-container w3-theme-l1"> 
+      <span onclick="document.getElementById('id01').style.display='none'"
+      class="w3-button w3-display-topright">×</span>
+      <h4>Create a new user</h4>
+    </header>
+    <div>
+      <form action="" method="post" class="w3-container w3-card-4">
+        <div class="w3-section">
+        <input class="w3-input" type="text" placeholder="Username" name="username" value="{{
+          request.form.username }}">
+        </div>
+        <div class="w3-section">
+         <input class="w3-input" type="password" placeholder="Password" name="password" value="{{
+          request.form.password }}">
+        </div>
+        <div class="w3-section w3-row">
+        <input class="w3-button w3-theme w3-large w3-quarter w3-animate-left" type="submit" value="Create-user" name="Create-user">
+        </div>
+      </form>
+    </div>
+    <footer class="w3-container w3-theme-l1">
+      <p>Attention: Dont use your passwords! The passwords arent stored secure!</p>
+    </footer>
+  </div>
+</div>
+
+<div id="id02" class="w3-modal">
+  <div class="w3-modal-content w3-card-4 w3-animate-top">
+    <header class="w3-container w3-theme-l1"> 
+      <span onclick="document.getElementById('id01').style.display='none'"
+      class="w3-button w3-display-topright">×</span>
+      <h4>Delete a user</h4>
+    </header>
+    <div>
+      <form action="" method="post" class="w3-container w3-card-4">
+        <div class="w3-section">
+        <input class="w3-input" type="text" placeholder="Username" name="username" value="{{
+          request.form.username }}">
+        </div>
+        <div class="w3-section">
+         <input class="w3-input" type="password" placeholder="Password" name="password" value="{{
+          request.form.password }}">
+        </div>
+        <div class="w3-section w3-row">
+        <input class="w3-button w3-theme w3-large w3-quarter w3-animate-left" type="submit" value="Delete-user" name="Delete-user">
+        </div>
+      </form>
+    </div>
+    <footer class="w3-container w3-theme-l1">
+      <p>Attention: Dont use your passwords! The passwords arent stored secure!</p>
+    </footer>
+  </div>
+</div>
+
+<div id="id03" class="w3-modal">
+  <div class="w3-modal-content w3-card-4 w3-animate-top">
+    <header class="w3-container w3-theme-l1"> 
+      <span onclick="document.getElementById('id01').style.display='none'"
+      class="w3-button w3-display-topright">×</span>
+      <h4>Create a user</h4>
+    </header>
+    <div>
+      <form action="" method="post" class="w3-container w3-card-4">
+        <div class="w3-section">
+        <input class="w3-input" type="text" placeholder="Name" name="name" value="{{
+          request.form.name }}">
+        </div>
+        <div class="w3-section w3-row">
+        <input class="w3-button w3-theme w3-large w3-quarter w3-animate-left" type="submit" value="Create" name="Create">
+        </div>
+      </form>
+    </div>
+    <footer class="w3-container w3-theme-l1">
+      <p>Attention: Dont use your passwords! The passwords arent stored secure!</p>
+    </footer>
+  </div>
+</div>
+
+<div class="w3-third">
+  <div class="w3-card w3-container" style="min-height:460px">
+  <h3>Status</h3><br>
+  <p>Logged in User: {{ user }}</p>
+  <label>Someone is Logged in:</label><input class="w3-check" type="checkbox" name="46466541564654654144" checked={{ logged_in }} value="454544656845646845644">
+  <br>
+  <label>Webinterface is enabled:</label><input class="w3-check" type="checkbox" name="464665415646546541" checked={{ enabled }} value="4545446568456468456">
+  <form method="post" action="/">
+    <input class="w3-button w3-theme" type="submit" value="Disable" name="Disable"/>
+  </form>
+  <p>Webinterface version: {{ version }}</p>
+  <p>Ping to google.com:</p>
+  <p>{{ ping }}</p>
+  </div>
+</div>
+
+<div class="w3-third">
+  <div class="w3-card w3-container" style="min-height:460px">
+  <h3>Todolists</h3><br>
+  <p>{{ lists }}</p>
+  <button class="w3-button w3-theme" onclick="document.getElementById('id03').style.display='block'">Create</button>
+  </div>
+</div>
+</div>
+
+
+</body>
+</html>
